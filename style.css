@@ -1,0 +1,36 @@
+
+body{
+  margin: 0px;
+}
+
+#header {
+  border-style: solid;
+  border-radius: 30px;
+  top: -30px;
+  position: absolute;
+  background: rgba(200,200,200,.9);
+  width: 20%;
+  min-width: 225px;
+}
+
+#headerTitle{
+  margin: 40px 10px 0px;
+  text-align: center;
+}
+
+#welcomeOptions{
+  width: 300px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 12px;
+  text-align: center;
+  top: 20%;
+  position: fixed;
+  left: 10%;
+  background: rgba(200,200,200,.9);
+}
+
+#signupButton {
+    width: 130px;
+    margin: 0px calc(130px - 25%) 20px;
+}

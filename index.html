@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<meta name="mobile-web-app-capable" content="yes">
+
+<httpProtocol>
+    <customHeaders>
+        <add name="Access-Control-Allow-Origin" value="*" />
+        <add name="Access-Control-Allow-Headers" value="Content-Type" />
+        <add name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE, OPTIONS" />
+    </customHeaders>
+</httpProtocol>
+
+<head>
+
+    <title>Mobility</title>
+
+    <!-- <script src="libs/pouchdb-4.0.0.min.js"></script> -->
+    <!-- <link rel="icon" href="images/car_icon_blue.png" type="image/png"> -->
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="utils/driverNavigation.js"></script>
+    <script src="utils/conversion.js"></script>
+    <script src="driver.js"></script>
+
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include the jQuery Mobile library -->
+    <!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+
+
+</head>
+
+<body style="height:90%;">
+
+    <div id="coverup" style="display:none;" onclick="clearOptions()"></div>
+
+    <div id="header">
+        <h1 id='headerTitle'> tracker.run </h1>
+    </div>
+
+    <div id='backgroundImage'>
+        <img src="images/track-surface.jpeg" />
+    </div>
+
+    <div id='welcomeOptions'>
+        <p>Signup with a provided code.</p>
+        <button id="signupButton">Signup</button>
+        <p>Login with an existing account.</p>
+        <button id="signupButton">Login</button>
+    </div>
+
+    <div id="driverOptionsForm" class="optionsForm" style="display:none;">
+        <button id="driver_button" class="driverButtons" onclick="promptLogoutVehicle()" class="ui-btn">Logout</button>
+        <button id="switch_driver_buton" class="driverButtons" onclick="switchDriver()" class="ui-btn">Switch Driver</button>
+    </div>
+
+    <div id="passengerOptionsForm" class="optionsForm passengerButtonsForm" style="display:none;">
+        <button id="pickup_button" class="driverButtons" onclick="driverPickupOptions()" class="ui-btn ui-state-disabled ui-shadow ui-corner-all">Pickup</button>
+        <button id="dropoff_button" class="driverButtons" onclick="driverDropoff()" class="ui-btn ui-state-disabled ui-shadow ui-corner-all">Dropoff</button>
+    </div>
+
+    <div id="passengerPickupOptions" class="optionsForm passengerButtonsForm" style="display:none;">
+        <button id="pickup_planned_button" class="driverButtons" onclick="driverPickupButton()" class="ui-btn ui-state-disabled ui-shadow ui-corner-all">Ordered</button>
+        <button id="pickup_walkon_button" class="driverButtons" onclick="driverAddPassenger()" class="ui-btn ui-state-disabled ui-shadow ui-corner-all">Walk-on</button>
+    </div>
+</body>
