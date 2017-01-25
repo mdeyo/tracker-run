@@ -12,7 +12,7 @@
 
 <head>
 
-    <title>Mobility</title>
+    <title>Tracker.Run</title>
 
     <!-- <script src="libs/pouchdb-4.0.0.min.js"></script> -->
     <!-- <link rel="icon" href="images/car_icon_blue.png" type="image/png"> -->
@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="utils/driverNavigation.js"></script>
     <script src="utils/conversion.js"></script>
-    <script src="driver.js"></script>
+    <script src="main.js"></script>
 
     <!-- Include meta tag to ensure proper rendering and touch zooming -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,23 +51,50 @@
 
     <div id='welcomeOptions'>
         <p>Signup with a provided code.</p>
-        <button id="signupButton">Signup</button>
+        <button id="signupButton" onclick="signup()">Signup</button>
         <p>Login with an existing account.</p>
-        <button id="signupButton">Login</button>
+        <button id="signupButton" onclick="login()">Login</button>
     </div>
 
-    <div id="driverOptionsForm" class="optionsForm" style="display:none;">
-        <button id="driver_button" class="driverButtons" onclick="promptLogoutVehicle()" class="ui-btn">Logout</button>
-        <button id="switch_driver_buton" class="driverButtons" onclick="switchDriver()" class="ui-btn">Switch Driver</button>
+    <div id="calendar">
+
+        <div class="month">
+            <ul>
+                <li class="prev">&#10094;</li>
+                <li class="next">&#10095;</li>
+                <li>
+                    August
+                    <br>
+                    <span style="font-size:18px">2016</span>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="weekdays">
+            <li>Mo</li>
+            <li>Tu</li>
+            <li>We</li>
+            <li>Th</li>
+            <li>Fr</li>
+            <li>Sa</li>
+            <li>Su</li>
+        </ul>
+
+        <ul class="days">
+            <li class="day"><span class="active">1</span></li>
+            <li class="day">2</li>
+            <li class="day">3</li>
+            <li class="day">4</li>
+            <li class="day">5</li>
+            <li class="day">6</li>
+            <li class="day">7</li>
+            <li class="day">8</li>
+            <li class="day">9</li>
+            <li class="day"><span class="active">10</span></li>
+            <li class="day">11</li>
+            ...etc
+        </ul>
+
     </div>
 
-    <div id="passengerOptionsForm" class="optionsForm passengerButtonsForm" style="display:none;">
-        <button id="pickup_button" class="driverButtons" onclick="driverPickupOptions()" class="ui-btn ui-state-disabled ui-shadow ui-corner-all">Pickup</button>
-        <button id="dropoff_button" class="driverButtons" onclick="driverDropoff()" class="ui-btn ui-state-disabled ui-shadow ui-corner-all">Dropoff</button>
-    </div>
-
-    <div id="passengerPickupOptions" class="optionsForm passengerButtonsForm" style="display:none;">
-        <button id="pickup_planned_button" class="driverButtons" onclick="driverPickupButton()" class="ui-btn ui-state-disabled ui-shadow ui-corner-all">Ordered</button>
-        <button id="pickup_walkon_button" class="driverButtons" onclick="driverAddPassenger()" class="ui-btn ui-state-disabled ui-shadow ui-corner-all">Walk-on</button>
-    </div>
 </body>
