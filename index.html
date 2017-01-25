@@ -37,7 +37,7 @@
 
 </head>
 
-<body style="height:90%;">
+<body onload="init()" style="height:90%;">
 
     <div id="coverup" style="display:none;" onclick="clearOptions()"></div>
 
@@ -62,7 +62,7 @@
             <ul>
                 <li class="prev">&#10094;</li>
                 <li class="next">&#10095;</li>
-                <li>
+                <li class="title">
                     August
                     <br>
                     <span style="font-size:18px">2016</span>
@@ -81,15 +81,18 @@
         </ul>
 
         <ul class="days">
-            <li class="day"><span class="active">1</span></li>
-            <li class="day">2</li>
-            <li class="day">3</li>
-            <li class="day">4</li>
-            <li class="day">5</li>
-            <li class="day">6</li>
-            <li class="day">7</li>
-            <li class="day">8</li>
-            <li class="day">9</li>
+            <li class="day"><span class="active">1</span>
+                <img class="add-button" id="button" src="images/add1.png" />
+            </li>
+            <li class="day" date="2" month="August">
+                <img class="add-button" id="button" src="images/add1.png" />2</li>
+            <li class="day" date="3" month="August"><img class="add-button" id="button" src="images/add1.png" />3</li>
+            <li class="day" date="4" month="August"><img class="add-button" id="button" src="images/add1.png" />4</li>
+            <li class="day" date="5" month="August"><img class="add-button" id="button" src="images/add1.png" />5</li>
+            <li class="day" date="6" month="August"><img class="add-button" id="button" src="images/add1.png" />6</li>
+            <li class="day" date="7" month="August"><img class="add-button" id="button" src="images/add1.png" />7</li>
+            <li class="day" date="8" month="August">8</li>
+            <li class="day" date="9" month="August">9</li>
             <li class="day"><span class="active">10</span></li>
             <li class="day">11</li>
             ...etc

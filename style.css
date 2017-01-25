@@ -61,6 +61,10 @@ body {font-family: Verdana, sans-serif;}
     letter-spacing: 3px;
 }
 
+.month .title{
+  padding-left: 5%;
+
+}
 /* Previous button inside month header */
 .month .prev {
     float: left;
@@ -93,7 +97,7 @@ body {font-family: Verdana, sans-serif;}
 
 /* Days (1-31) */
 .days {
-    padding: 10px 0;
+    padding: 5px 0;
     background: #eee;
     margin: 0;
     height: 200px;
@@ -115,8 +119,25 @@ border-left-style: dotted;
 margin-bottom: 10px;
 cursor: pointer; cursor: hand;
 }
+.days li #button{
+  display: none;
+  max-width: 30px;
+  width: 25%;
+  min-width: 15px;
+  float: right;
+  margin-right: 2%;
+  margin-top: 2px;
+}
+.days li:hover #button{
+  display: block;
+}
 .days li:hover {
-    background-color: rgba(119,119,119,0.3);
+    background-color: rgba(119,119,119,0.1);
+}
+.days li span{
+  float: left;
+padding: 5px;
+margin: 5px;
 }
 /* Highlight the "current" day */
 .days li .active {
