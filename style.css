@@ -3,6 +3,14 @@ body{
   margin: 0px;
 }
 
+#coverup{
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background: rgba(100,100,100,0.5);
+position: fixed;
+}
+
 #header {
   border-style: solid;
   border-radius: 30px;
@@ -16,6 +24,71 @@ body{
 #headerTitle{
   margin: 40px 10px 0px;
   text-align: center;
+}
+
+#addOptions{
+  z-index: 3;
+position: fixed;
+top: 40%;
+left: calc(25%);
+width: 50%;
+background: #1abc9c;
+border-style: solid;
+border-width: 1px;
+border-radius: 12px;
+padding: 10px;
+/*text-align: center;*/
+/*height: 200px;*/
+}
+#addOptions #frame{
+  display: block;
+height: 40px;
+margin: 15px;
+}
+#addOptions p{
+  margin: 0px;
+line-height: 40px;
+}
+#addOptions #activities p{
+  width: 10%;
+  line-height: 50px;
+}
+#addOptions #activities{
+  display: inline-flex;
+  width: 90%;
+margin: 6px;
+}
+
+#addOptions #close-icon{
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+#addOptions #activities .selectize-control{
+width: 80%;
+margin-left: 10px;
+}
+#addOptions button{
+  width: 20%;
+text-align: center;
+position: relative;
+left: calc(40%);
+min-width: 80px;
+}
+
+
+#addOptions #input-frame{
+  display: inline-flex;
+  width: 83%;
+margin: 6px;
+}
+#addOptions #input-frame input{
+  width:80px;
+  margin-left: 10px;
+}
+#addOptions #input-frame textarea{
+  margin-left: 10px;
 }
 
 #welcomeOptions{
@@ -33,6 +106,20 @@ body{
 #signupButton {
     width: 130px;
     margin: 0px calc(130px - 25%) 20px;
+}
+
+.item img{
+  height: 30px;
+}
+.item{
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+font-style: italic;
+font-weight: bold;
+}
+.item a{
+  float: right;
 }
 
 ul {list-style-type: none;}
@@ -100,24 +187,22 @@ body {font-family: Verdana, sans-serif;}
     padding: 5px 0;
     background: #eee;
     margin: 0;
-    height: 200px;
+    height: 500px;
 }
 
 .days li {
     list-style-type: none;
     display: inline-block;
-    width: calc(14.28% - 6px);
+    width: calc(14.28% - 1px);
     /*text-align: center;*/
-padding-bottom: 5px;
+/*padding-bottom: 5px;*/
 font-size:12px;
     color:#777;
     height:90px;
     float: left;
     border-width: 1px;
-padding-left: 5px;
 border-left-style: dotted;
 margin-bottom: 10px;
-cursor: pointer; cursor: hand;
 }
 .days li #button{
   display: none;
@@ -127,6 +212,8 @@ cursor: pointer; cursor: hand;
   float: right;
   margin-right: 2%;
   margin-top: 2px;
+  cursor: pointer; cursor: hand;
+
 }
 .days li:hover #button{
   display: block;

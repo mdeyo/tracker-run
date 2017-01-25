@@ -14,22 +14,26 @@
 
     <title>Tracker.Run</title>
 
-    <!-- <script src="libs/pouchdb-4.0.0.min.js"></script> -->
-    <!-- <link rel="icon" href="images/car_icon_blue.png" type="image/png"> -->
-
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="utils/driverNavigation.js"></script>
-    <script src="utils/conversion.js"></script>
-    <script src="main.js"></script>
-
-    <!-- Include meta tag to ensure proper rendering and touch zooming -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Include jQuery Mobile stylesheets -->
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
     <!-- Include the jQuery library -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- <script src="libs/pouchdb-4.0.0.min.js"></script> -->
+    <!-- <link rel="icon" href="images/car_icon_blue.png" type="image/png"> -->
+    <script type="text/javascript" src="libs/selectize/selectize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="libs/selectize/selectize.default.css" />
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <script src="utils/driverNavigation.js"></script> -->
+    <!-- <script src="utils/conversion.js"></script> -->
+    <script src="main.js"></script>
+
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 
     <!-- Include the jQuery Mobile library -->
     <!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
@@ -41,6 +45,33 @@
 
     <div id="coverup" style="display:none;" onclick="clearOptions()"></div>
 
+    <div id='addOptions' style="display:none;">
+        <div id="activities">
+
+            <p>Activities</p>
+            <input id="input-tags">
+        </div>
+
+        <img src="images/close.png" id="close-icon" onclick="hideAddMenu()" />
+
+        <div id="input-frame">
+            <p>Miles</p>
+            <input></input>
+        </div>
+        <div id="input-frame">
+            <p>Time</p>
+            <input></input>
+        </div>
+        <div id="input-frame">
+            <p>Notes</p>
+            <textarea cols="30" rows="2"></textarea>
+        </div>
+
+        <button>Submit</button>
+
+    </div>
+
+    <!--
     <div id="header">
         <h1 id='headerTitle'> tracker.run </h1>
     </div>
@@ -55,6 +86,8 @@
         <p>Login with an existing account.</p>
         <button id="signupButton" onclick="login()">Login</button>
     </div>
+
+    <input id="input-tags"> -->
 
     <div id="calendar">
 
@@ -80,22 +113,8 @@
             <li>Su</li>
         </ul>
 
-        <ul class="days">
-            <li class="day"><span class="active">1</span>
-                <img class="add-button" id="button" src="images/add1.png" />
-            </li>
-            <li class="day" date="2" month="August">
-                <img class="add-button" id="button" src="images/add1.png" />2</li>
-            <li class="day" date="3" month="August"><img class="add-button" id="button" src="images/add1.png" />3</li>
-            <li class="day" date="4" month="August"><img class="add-button" id="button" src="images/add1.png" />4</li>
-            <li class="day" date="5" month="August"><img class="add-button" id="button" src="images/add1.png" />5</li>
-            <li class="day" date="6" month="August"><img class="add-button" id="button" src="images/add1.png" />6</li>
-            <li class="day" date="7" month="August"><img class="add-button" id="button" src="images/add1.png" />7</li>
-            <li class="day" date="8" month="August">8</li>
-            <li class="day" date="9" month="August">9</li>
-            <li class="day"><span class="active">10</span></li>
-            <li class="day">11</li>
-            ...etc
+        <ul class="days" id='days'>
+
         </ul>
 
     </div>
