@@ -1,9 +1,29 @@
 
-body{
-  margin: 0px;
+
+@font-face {
+    font-family: palanquin-regular;
+    src: url(fonts/palanquin/palanquin-regular.ttf);
+}
+@font-face {
+    font-family: palanquin-bold;
+    src: url(fonts/palanquin/palanquin-bold.ttf);
 }
 
-#coverup{
+:root{
+  --main-color: #88bbd6;
+  --accent-color: #99d3df;
+  --white-color: white;
+  --light-color: #e9e9e9;
+  --darker-color: #cdcdcd;
+}
+
+body{
+  margin: 0px;
+  font-family: palanquin-regular;
+
+}
+
+#default #coverup{
   height: 100%;
   width: 100%;
   z-index: 2;
@@ -32,7 +52,7 @@ position: fixed;
 top: 40%;
 left: calc(25%);
 width: 50%;
-background: #1abc9c;
+background: var(--accent-color);
 border-style: solid;
 border-width: 1px;
 border-radius: 12px;
@@ -50,7 +70,7 @@ margin: 15px;
 line-height: 40px;
 }
 #addOptions #activities p{
-  width: 10%;
+  /*width: 10%;*/
   line-height: 50px;
 }
 #addOptions #activities{
@@ -123,16 +143,19 @@ font-weight: bold;
 }
 
 ul {list-style-type: none;}
-body {font-family: Verdana, sans-serif;}
+/*body {font-family: Verdana, sans-serif;}*/
 
 #calendar{
   margin:30px;
 }
 /* Month header */
-.month {
+#default .month {
+  font-family: palanquin-bold;
     padding: 70px 25px;
     /*width: 100%;*/
-    background: #1abc9c;
+    /*background: #1abc9c;*/
+    background: var(--main-color);
+
 }
 
 /* Month list */
@@ -143,14 +166,17 @@ body {font-family: Verdana, sans-serif;}
 
 .month ul li {
     color: white;
-    font-size: 20px;
+    font-size: 30px;
     text-transform: uppercase;
     letter-spacing: 3px;
 }
 
 .month .title{
   padding-left: 5%;
-
+  font-size: 30px;
+}
+.month .title span{
+  font-size: 25px;
 }
 /* Previous button inside month header */
 .month .prev {
@@ -168,8 +194,10 @@ body {font-family: Verdana, sans-serif;}
 .weekdays {
     margin: 0;
     padding: 10px 0;
-    background-color:#ddd;
+    background:var(--darker-color);
     height: 20px;
+    font-size: 18px;
+    line-height: 20px;
 }
 
 .weekdays li {
@@ -196,13 +224,14 @@ body {font-family: Verdana, sans-serif;}
     width: calc(14.28% - 1px);
     /*text-align: center;*/
 /*padding-bottom: 5px;*/
-font-size:12px;
+font-size:16px;
     color:#777;
     height:90px;
     float: left;
     border-width: 1px;
 border-left-style: dotted;
 margin-bottom: 10px;
+border-color: #cdcdcd;
 }
 .days li #button{
   display: none;
@@ -229,6 +258,6 @@ margin: 5px;
 /* Highlight the "current" day */
 .days li .active {
     padding: 5px;
-    background: #1abc9c;
+    background: var(--main-color);
     color: white !important
 }

@@ -54,9 +54,10 @@ function addDay(month, i) {
     day.setAttribute('month', month);
     day.month = month;
     span.innerHTML = i;
+    // span.className += 'active';
     addButton.className += "add-button";
     addButton.id = "button";
-    addButton.src = "images/add1.png";
+    addButton.src = "images/add2.png";
     content.id = "content";
     day.appendChild(span);
     day.appendChild(addButton);
@@ -75,7 +76,7 @@ function init() {
 
     var classname = document.getElementsByClassName("day");
 
-    var myFunction = function () {
+    var myFunction = function() {
         // console.log(this);
         // console.log(this.innerHTML);
         console.log('date:' + this.getAttribute("date"));
@@ -87,7 +88,7 @@ function init() {
         console.log(coverup);
     };
 
-    var getChild = function (div, search, name) {
+    var getChild = function(div, search, name) {
         var children = div.childNodes;
         if (search == "id") {
             for (i in children) {
@@ -107,7 +108,7 @@ function init() {
         }
     }
 
-    var addFunction = function () {
+    var addFunction = function() {
         console.log("button pressed");
         var date = this.parentElement.getAttribute("month") + " " + this.parentElement.getAttribute("date");
         console.log("date:" + date);
@@ -129,21 +130,36 @@ function init() {
         maxItems: null,
         valueField: 'id',
         searchField: 'title',
-        options: [
-            { id: 1, title: 'Run', src: 'images/running-icon-5.png' },
-            { id: 2, title: 'Elliptical', url: 'http://google.com', src: 'images/elliptical-icon.png' },
-            { id: 3, title: 'Bike', url: 'http://yahoo.com', src: 'images/exercise-bike-icon.png' },
-            { id: 4, title: 'ATR', url: 'http://yahoo.com', src: 'images/health-icon.png' },
+        options: [{
+                id: 1,
+                title: 'Run',
+                src: 'images/running-icon-5.png'
+            }, {
+                id: 2,
+                title: 'Elliptical',
+                url: 'http://google.com',
+                src: 'images/elliptical-icon.png'
+            }, {
+                id: 3,
+                title: 'Bike',
+                url: 'http://yahoo.com',
+                src: 'images/exercise-bike-icon.png'
+            }, {
+                id: 4,
+                title: 'ATR',
+                url: 'http://yahoo.com',
+                src: 'images/health-icon.png'
+            },
 
         ],
         render: {
-            option: function (data, escape) {
+            option: function(data, escape) {
                 return '<div class="option">' +
                     '<span class="title">' + escape(data.title) + '</span>' +
                     // '<span class="url">' + escape(data.url) + '</span>' +
                     '</div>';
             },
-            item: function (data, escape) {
+            item: function(data, escape) {
                 console.log(data.src);
                 console.log(escape(data.src));
                 if (!data.src) {
@@ -153,19 +169,17 @@ function init() {
                 return '<div class="item"><img src=' + escape(data.src) + ' /><a> ' + escape(data.title) + '</a></div>';
             }
         },
-        create: function (input) {
+        create: function(input) {
             return {
                 id: 0,
                 title: input,
             };
         },
-        onFocus: function () {
+        onFocus: function() {
             console.log("onfocus!");
         },
-        onBlur: function () {
+        onBlur: function() {
             console.log("onblur!");
         }
-
     });
-
 }
