@@ -1,13 +1,12 @@
+var db;
+
+
 function signup() {
     console.log("pressed signup button");
-
-
 }
 
 function login() {
     console.log("pressed login button");
-
-
 }
 
 var coverup, addOptions;
@@ -65,7 +64,34 @@ function addDay(month, i) {
     return day;
 }
 
+function getLog() {
+    db.get('log').then(function(doc) {
+        // success
+        console.log('found log doc');
+        console.log(doc);
+    }).catch(function(err) {
+        if (err.name === 'not_found') {
+            // conflict!
+            console.log('**ERROR: doc not found - making new one');
+            makeNewLogDoc();
+        } else {
+            // some other error
+            console.log('**ERROR: unkown');
+        }
+    });
+}
+
+function makeNewLogDoc() {
+    var doc = {
+        "_id": "log"
+    };
+    db.put(doc);
+}
+
 function init() {
+
+    db = new PouchDB('http://mdeyo.csail.mit.edu:5984/tracker_run');
+    getLog();
 
     coverup = document.getElementById('coverup');
     addOptions = document.getElementById('addOptions');
