@@ -1,5 +1,7 @@
 var db;
 
+var currentDateTime = "";
+
 
 function signup() {
     console.log("pressed signup button");
@@ -57,6 +59,7 @@ function addDay(month, i) {
     addButton.className += "add-button";
     addButton.id = "button";
     addButton.src = "images/add2.png";
+    addButton.addEventListener('click', addFunction, false);
     content.id = "content";
     day.appendChild(span);
     day.appendChild(addButton);
@@ -65,11 +68,12 @@ function addDay(month, i) {
 }
 
 function getLog() {
-    db.get('log').then(function(doc) {
+    db.get('log').then(function (doc) {
         // success
         console.log('found log doc');
         console.log(doc);
-    }).catch(function(err) {
+        logDoc = doc;
+    }).catch(function (err) {
         if (err.name === 'not_found') {
             // conflict!
             console.log('**ERROR: doc not found - making new one');
@@ -81,11 +85,40 @@ function getLog() {
     });
 }
 
+var logDoc;
+
 function makeNewLogDoc() {
     var doc = {
         "_id": "log"
     };
     db.put(doc);
+}
+
+function saveDoc(doc) {
+    db.put(doc).then(function () {
+        console.log("saved successfully");
+    });
+}
+
+function addToLog() {
+    var dateTime = currentDateTime;
+    var text = document.getElementById("activity-text-input").value;
+    //check if already an entry for this dateTime:
+    if (dateTime in logDoc) {
+        console.log(dateTime + " already has an entry");
+    } else {
+        logDoc[dateTime] = text;
+        saveDoc(logDoc);
+        hideAddMenu();
+    }
+}
+
+function addFunction() {
+    console.log("button pressed");
+    var date = this.parentElement.getAttribute("month") + " " + this.parentElement.getAttribute("date");
+    console.log("date:" + date);
+    showAddMenu(this);
+    currentDateTime = date;
 }
 
 function init() {
@@ -102,7 +135,7 @@ function init() {
 
     var classname = document.getElementsByClassName("day");
 
-    var myFunction = function() {
+    var myFunction = function () {
         // console.log(this);
         // console.log(this.innerHTML);
         console.log('date:' + this.getAttribute("date"));
@@ -114,7 +147,7 @@ function init() {
         console.log(coverup);
     };
 
-    var getChild = function(div, search, name) {
+    var getChild = function (div, search, name) {
         var children = div.childNodes;
         if (search == "id") {
             for (i in children) {
@@ -132,21 +165,14 @@ function init() {
                 }
             }
         }
-    }
+    };
 
-    var addFunction = function() {
-        console.log("button pressed");
-        var date = this.parentElement.getAttribute("month") + " " + this.parentElement.getAttribute("date");
-        console.log("date:" + date);
-        showAddMenu(this);
-    }
-
-    for (var i = 0; i < classname.length; i++) {
-        // classname[i].addEventListener('click', myFunction, false);
-        if (classname[i].getElementsByClassName('add-button')['button']) {
-            classname[i].getElementsByClassName('add-button')['button'].addEventListener('click', addFunction, false);
-        }
-    }
+    // for (var i = 0; i < classname.length; i++) {
+    //     // classname[i].addEventListener('click', myFunction, false);
+    //     if (classname[i].getElementsByClassName('add-button')['button']) {
+    //         classname[i].getElementsByClassName('add-button')['button'].addEventListener('click', addFunction, false);
+    //     }
+    // }
 
     $('#input-tags').selectize({
         delimiter: ',',
@@ -179,13 +205,13 @@ function init() {
 
         ],
         render: {
-            option: function(data, escape) {
+            option: function (data, escape) {
                 return '<div class="option">' +
                     '<span class="title">' + escape(data.title) + '</span>' +
                     // '<span class="url">' + escape(data.url) + '</span>' +
                     '</div>';
             },
-            item: function(data, escape) {
+            item: function (data, escape) {
                 console.log(data.src);
                 console.log(escape(data.src));
                 if (!data.src) {
@@ -195,16 +221,16 @@ function init() {
                 return '<div class="item"><img src=' + escape(data.src) + ' /><a> ' + escape(data.title) + '</a></div>';
             }
         },
-        create: function(input) {
+        create: function (input) {
             return {
                 id: 0,
                 title: input,
             };
         },
-        onFocus: function() {
+        onFocus: function () {
             console.log("onfocus!");
         },
-        onBlur: function() {
+        onBlur: function () {
             console.log("onblur!");
         }
     });
